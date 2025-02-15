@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+
 import {
   Table,
   TableBody,
@@ -16,6 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+
 import { calculatePastDate, formatDateTime, formatNumber } from '@/lib/utils'
 import SalesCategoryPieChart from './sales-category-pie-chart'
 import React, { useEffect, useState, useTransition } from 'react'
@@ -27,14 +29,16 @@ import { IOrderList } from '@/types'
 import ProductPrice from '@/components/shared/product/product-price'
 import TableChart from './table-chart'
 import { Skeleton } from '@/components/ui/skeleton'
+
 export default function OverviewReport() {
   const [date, setDate] = useState<DateRange | undefined>({
     from: calculatePastDate(30),
     to: new Date(),
   })
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<{ [key: string]: any }>()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  
   const [isPending, startTransition] = useTransition()
   useEffect(() => {
     if (date) {
